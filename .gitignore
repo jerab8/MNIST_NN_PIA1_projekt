@@ -1,0 +1,6 @@
+stepan/t10k-images.idx3-ubyte
+stepan/t10k-labels.idx1-ubyte
+stepan/train-images.idx3-ubyte
+stepan/train-labels.idx1-ubyte
+.vscode/tasks.json
+stepan/image_loader.exe
