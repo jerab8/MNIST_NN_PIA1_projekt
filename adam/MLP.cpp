@@ -99,6 +99,7 @@ inline float apply_activation_derivative(float s, div_Activation a) {
 std::vector<float>& forward_step(const std::vector<float> &neuron_vec_in,
                                  std::vector<float> &neuron_vec_out,
                                  const std::vector<std::vector<float>> &weight_matrix,
+                                 std::vector<float> &potencial_out,
                                 Activation act)
 {
     const int neurons = (int)weight_matrix.size();        // = count of neurons
@@ -125,7 +126,7 @@ void backward_step_output(const std::vector<float>& right_neuron_vec,   // y^L (
                           const std::vector<float>& label,              // d (cílové hodnoty)
                           const std::vector<float>& potencial,          // s^L (pre-aktivace)
                           float n,                                      // learning rate
-                          Activation act,                               // aktivace výstupní vrstvy
+                          div_Activation act,                               // aktivace výstupní vrstvy
                           std::vector<float>& delta_out)                // vrátíme δ^L (pro další backprop)
 {
     const int n_out = (int)right_neuron_vec.size();      // počet výstupních neuronů = řádky W
