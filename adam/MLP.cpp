@@ -106,12 +106,14 @@ std::vector<float>& forward_step(const std::vector<float> &neuron_vec_in,
     const int cols    = (int)weight_matrix[0].size();     // = 1 (bias) + count of input neurons 
 
     neuron_vec_out.resize(neurons);
+    potencial_out.resize(neurons);
 
     for (int k = 0; k < neurons; ++k) {          // row = neuron k
         float potencial = weight_matrix[k][0];           // bias is in first column weight_matrix[k][0]
         for (int i = 1; i < cols; ++i) {         // i = 1..in_count
             potencial += weight_matrix[k][i] * neuron_vec_in[i - 1];
         }
+        potencial_out[k] = potencial;
         neuron_vec_out[k] = apply_activation(potencial, act);
     }
     return neuron_vec_out;
@@ -120,14 +122,14 @@ std::vector<float>& forward_step(const std::vector<float> &neuron_vec_in,
 
 //TODO: repair. this will not work
 //vec names are given from left to right architecture point of view
-void backward_step_output(const std::vector<float>& right_neuron_vec,   // y^L (výstup vrstvy)
-                          const std::vector<float>& left_neuron_vec,    // y^{L-1} (vstup do vrstvy)
-                          std::vector<std::vector<float>>& weight_matrix, // W^L [n_out x (n_in+1)]
-                          const std::vector<float>& label,              // d (cílové hodnoty)
-                          const std::vector<float>& potencial,          // s^L (pre-aktivace)
+void backward_step_output(const std::vector<float>& right_neuron_vec,   // output
+                          const std::vector<float>& left_neuron_vec,    // hiden layer
+                          std::vector<std::vector<float>>& weight_matrix, // weights
+                          const std::vector<float>& label,              // labels
+                          const std::vector<float>& potencial,          // argument values 
                           float n,                                      // learning rate
-                          div_Activation act,                               // aktivace výstupní vrstvy
-                          std::vector<float>& delta_out)                // vrátíme δ^L (pro další backprop)
+                          div_Activation act,                               // derivative of ac fc
+                          std::vector<float>& delta_out)                // for other hidden layers
 {
     const int n_out = (int)right_neuron_vec.size();      // počet výstupních neuronů = řádky W
     const int n_inp = (int)left_neuron_vec.size();       // počet vstupů = (sloupce W - 1)
