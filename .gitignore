@@ -4,3 +4,8 @@ stepan/train-images.idx3-ubyte
 stepan/train-labels.idx1-ubyte
 .vscode/tasks.json
 stepan/image_loader.exe
+spoluprace/t10k-images.idx3-ubyte
+spoluprace/t10k-labels.idx1-ubyte
+spoluprace/train-images.idx3-ubyte
+spoluprace/train-labels.idx1-ubyte
+spoluprace/MLP
