@@ -9,3 +9,8 @@ spoluprace/t10k-labels.idx1-ubyte
 spoluprace/train-images.idx3-ubyte
 spoluprace/train-labels.idx1-ubyte
 spoluprace/MLP
+honza/mnist
+honza/t10k-images.idx3-ubyte
+honza/t10k-labels.idx1-ubyte
+honza/train-images.idx3-ubyte
+honza/train-labels.idx1-ubyte
