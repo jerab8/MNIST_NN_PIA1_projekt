@@ -1,5 +1,7 @@
 # MNIST Neural Network Project (PIA1)
 
+Authors: Adam Bednář, Jan Jeřábek, Štěpán Müller
+
 This project contains a C++ implementation of a Multi-Layer Perceptron (MLP) built from scratch to classify handwritten digits from the MNIST dataset. It features a custom neural network library (`MLP.hpp`), a training pipeline with logging (`train.cpp`), and an interactive prediction tool (`predict.cpp`).
 
 ## File Structure
